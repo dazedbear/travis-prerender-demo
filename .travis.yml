@@ -1,0 +1,32 @@
+dist: trusty
+language: node_js
+node_js:
+- lts/*
+addons:
+  chrome: stable
+cache:
+  directories:
+  - node_modules
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+install:
+- yarn
+script:
+- mkdir build
+- yarn run prerender
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: $S3_BUCKET_NAME
+  region: ap-northeast-1
+  skip_cleanup: true
+  local_dir: build
+  on:
+    repo: dazedbear/travis-prerender-demo
+notifications:
+  slack: dazedbear:lg4AOFwPUo1ialwVVkqgZ1J1
+    template:
+    - Deploy %{result} of %{repository}@%{branch} by %{author}
+    - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) in %{duration}
+    - 'Commit message : %{commit_message}'
