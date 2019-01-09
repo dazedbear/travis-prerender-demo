@@ -8,11 +8,10 @@ cache:
   directories:
   - node_modules
 before_install:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 install:
 - yarn
 script:
-- mkdir build
 - yarn run prerender
 deploy:
   provider: s3
@@ -25,7 +24,9 @@ deploy:
   on:
     repo: dazedbear/travis-prerender-demo
 notifications:
-  slack: dazedbear:lg4AOFwPUo1ialwVVkqgZ1J1
+  slack:
+    rooms:
+      secure: ijcPiD7qU5ivgD5bXcm9yBPQf+E+FQqeLSOXhgFe+0FMWT0yTCnfulX85jRU1z0MhYhl/dt+H1OhHhdiKTI2aMwwFK0PmeG29xWc/jVg1HwpwWo0rEO0yAFD4jsJXZgjWyxfew8gMnotj4H1PG6kOpqufdgDfq1K9FB/UsElQ0EQZcyd1cSzdimb4i2AmUwabGVEkvqwE+F7DhwU6mMsIxoRhlCOsxritfoUvS6XWdCmqLlR9+RzI0+UKHhiHkHbTPdxYDtg4KPp1P7osZeuCU1ql6I4WKN5rzSi1jUeFNlQuBR1e5IKptd7kU6G4NUprlIZfLZS/hbBIKd5gSpM7lrm+qOv07cqI460OFv0HDOCCme+3y9JztKxmO348j0uIGUgvmADrO7DFCTNTdyQ1UFYHjHNIc3lbCq822Yba6tP1QEW+zNjJvREP5F3A9ugzU11jK5y+BFt9IXY1dkiEAhLa9PB1JAl7Exc03XpLykiR7vxY1z71cCGF2I9rhg5H3rhkH0SlEuVqPTka2aF0nBUG/IOEygJXsdGkpleu34iyAGO62ZQiDr6y4FrvZ5SW+19pEAIMJWfro3ALX5FQAL0Igj4UOkqDIxijlAGc2Fw7K3tWbrr3VksjoxhV3aOVsO6IkdyvD/yjkQsTIt7FGZAXYCBdLwT7MlpZXyv7Xg=
     template:
     - Deploy %{result} of %{repository}@%{branch} by %{author}
     - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) in %{duration}

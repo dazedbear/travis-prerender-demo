@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "prerender": "node main.js"
+    "prerender": "node scripts/prerender.js",
+    "prerender:server": "rendertron"
   },
   "repository": "https://github.com/dazedbear/travis-prerender-demo.git",
   "author": "dazedbear <angus912584@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.3.0",
+    "path-to-regexp": "^2.4.0",
+    "rendertron": "^2.0.1"
+  }
 }
