@@ -4,12 +4,14 @@
   "main": "main.js",
   "scripts": {
     "prerender": "node scripts/prerender.js",
-    "prerender:server": "rendertron"
+    "rendertron:start": "forever start node_modules/rendertron/build/rendertron.js",
+    "rendertron:stop": "forever stop node_modules/rendertron/build/rendertron.js"
   },
   "repository": "https://github.com/dazedbear/travis-prerender-demo.git",
   "author": "dazedbear <angus912584@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "forever": "^0.15.3",
     "node-fetch": "^2.3.0",
     "path-to-regexp": "^2.4.0",
     "rendertron": "^2.0.1"
