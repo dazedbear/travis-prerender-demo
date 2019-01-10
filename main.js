@@ -33,7 +33,7 @@ const prerenderRoute = async (host = '', path = '') => {
       throw Error(`Invalid path.\nExpect string with at least length > 0 but found ${path}`);
 
     // 爬取網頁 html
-    const url = new URL(`${host}/${path}`).toString();
+    const url = new URL(`${host}${path}`).toString();
     const htmlString = await fetch(`${config.server}/${url}`)
       .then(response => response.text())
       .catch(e => {
