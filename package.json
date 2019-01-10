@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "prerender": "node scripts/prerender.js",
-    "rendertron:start": "forever start node_modules/rendertron/build/rendertron.js",
-    "rendertron:stop": "forever stop node_modules/rendertron/build/rendertron.js"
+    "prerender": "node ./scripts/prerender.js",
+    "rendertron:start": "forever start ./node_modules/rendertron/build/rendertron.js",
+    "rendertron:stop": "forever stop ./node_modules/rendertron/build/rendertron.js"
   },
   "repository": "https://github.com/dazedbear/travis-prerender-demo.git",
   "author": "dazedbear <angus912584@gmail.com>",
